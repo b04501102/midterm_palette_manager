@@ -47,6 +47,8 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 - [x] Add/Delete Palettes
 - [x] Add Tags
 - [x] Update Palettes
+- [ ] Use [React Color](http://casesandberg.github.io/react-color/) to select colors
 - [ ] Classify palettes by tags, author, ...
+- [ ] Upload Images and choose palette from them 
 - [ ] Export palettes in different format
 - [ ] Generate palette automatically
