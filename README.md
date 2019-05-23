@@ -46,7 +46,7 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 - [x] UI Prototype
 - [x] Add/Delete Palettes
 - [x] Add Tags
-- [ ] Update Palettes
+- [x] Update Palettes
 - [ ] Classify palettes by tags, author, ...
 - [ ] Export palettes in different format
 - [ ] Generate palette automatically
