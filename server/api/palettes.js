@@ -15,6 +15,11 @@ router.post('/', (req, res) => {
     if(err) throw err
   })
 })
+router.put('/:id', (req, res) => {
+  console.log(req.body)
+  
+  Palette.findByIdAndUpdate(req.params.id, req.body, (err, doc) => { console.log(err) })
+})
 router.delete('/:id', (req, res) => {
   Palette.findByIdAndRemove(req.params.id, (err, doc) => { console.log(err) })
 })

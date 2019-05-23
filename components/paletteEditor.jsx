@@ -9,8 +9,8 @@ import Palette from '../models/paletteModel.js'
 const OPTIONS_AUTHOR = ['Rainforest']
 const OPTIONS_TAGS = ['Material Design', 'Ant Design', 'Processing', 'Web', 'iOS']
 
-const CreatePaletteForm = () => {
-  const [palette, setPalette] = useState(new Palette())
+const PaletteEditor = ({ selectedPalette }) => {
+  const [palette, setPalette] = useState(selectedPalette)
   const dispatch = useDispatch()
 
   const changeTitle = e => {
@@ -40,9 +40,8 @@ const CreatePaletteForm = () => {
     setPalette(palette)
   }
 
-  const addPalette = () => {
-    dispatch({ type: 'ADD_PALETTE', palette: palette })
-    setPalette(new Palette())
+  const updatePalette = () => {
+    dispatch({ type: 'UPDATE_PALETTE', palette: palette })
   }
 
   return (
@@ -87,9 +86,9 @@ const CreatePaletteForm = () => {
           )) }
         </Select>
       </Item>
-      <Item><Button type="primary" htmlType="submit" onClick={ addPalette }>ADD</Button></Item>
+      <Item><Button type="primary" htmlType="submit" onClick={ updatePalette }>UPDATE</Button></Item>
     </Form>
   )
 }
 
-export default CreatePaletteForm
+export default PaletteEditor

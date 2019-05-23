@@ -37,9 +37,27 @@ function * addPalette(action) {
     console.log('fail to add palette')
   }
 }
-
 function * watchAddPalette() {
   yield takeEvery('ADD_PALETTE', addPalette)
+}
+
+function * updatePalette(action) {
+  try {
+    const json = yield fetch(PALETTES_API_URL + action.palette._id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(action.palette)
+    }).then(res => {return res.json()})
+    
+    yield put({ type: 'LOAD_PALETTES', json })
+  } catch(err) {
+    console.log('fail to add palette')
+  }
+}
+function * watchUpdatePalette() {
+  yield takeEvery('UPDATE_PALETTE', updatePalette)
 }
 
 function * deletePalette(action) {
@@ -61,6 +79,7 @@ export default function * rootSaga() {
   yield all([
     watchFetchPalettes(),
     watchAddPalette(),
+    watchUpdatePalette(),
     watchDeletePalette()
   ])
 }

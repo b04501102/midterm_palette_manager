@@ -3,7 +3,8 @@ import withLayout from '../layout'
 import io from 'socket.io-client'
 import PaletteCard from '../components/paletteCard'
 import CreatePaletteForm from '../components/createPaletteForm'
-import { Row, Col, Button, Modal } from 'antd'
+import PaletteEditor from '../components/paletteEditor'
+import { Row, Col, Button, Modal, Drawer } from 'antd'
 
 import { connect, useSelector, useDispatch } from 'react-redux'
 
@@ -13,15 +14,12 @@ const Home = () => {
   
   var socket = null
   const palettes = useSelector(state => state.palettes)
+  const isEditorMode = useSelector(state => state.isEditorMode)
+  const selectedPalette = useSelector(state => state.selectedPalette)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch({ type: 'LOAD_PALETTES'})
-
-    // socket = io('http://localhost:3000')
-    // socket.on('init', data => {
-    //   setMsg(data.message)
-    // })
   })
 
   const showCreatePaletteFormModal = () => {
@@ -29,6 +27,10 @@ const Home = () => {
   }
   const hideCreatePaletteFormModal = () => {
     setIsCreatePaletteFormModalVissible(false)
+  }
+
+  const hidePaletteEditor = () => {
+    dispatch({ type: 'TOGGLE_EDIT_MODE', isEditMode: false })
   }
 
   return (
@@ -58,6 +60,15 @@ const Home = () => {
           )
         }) }
       </Row>
+      <Drawer
+        title={ selectedPalette.title }
+        placement="right"
+        closable={true}
+        visible={ isEditorMode }
+        onClose={ hidePaletteEditor }
+      >
+        <PaletteEditor selectedPalette={ selectedPalette } />
+      </Drawer>
     </>
   )
 }

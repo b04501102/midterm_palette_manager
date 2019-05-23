@@ -15,20 +15,31 @@ const gridStyle = (bgc) => ({
 const PaletteCard = ({ palette }) => {
   const dispatch = useDispatch()
 
+  const updatePalette = () => {
+    dispatch({ type: 'SELECT_PALETTE', palette: palette })
+    dispatch({ type: 'TOGGLE_EDIT_MODE', isEditMode: true })
+  }
+
   const removePalette = () => {
     dispatch({ type: 'DELETE_PALETTE', id: palette._id })
   }
 
   return (
     <Card>
-      <Button style={{
-          position: 'absolute',
-          right: '10px',
-          top: '10px'
-        }}
-        icon='delete'
-        onClick={ removePalette }
-      ></Button>
+      <Row style={{
+        position: 'absolute',
+        right: '10px',
+        top: '10px'
+      }}>
+        <Button 
+          icon='edit'
+          onClick={ updatePalette }
+        />
+        <Button
+          icon='delete'
+          onClick={ removePalette }
+        />
+      </Row>
       <Meta
         avatar={<Avatar icon='user' />}
         title={ palette.title }
