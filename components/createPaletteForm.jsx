@@ -91,10 +91,12 @@ const CreatePaletteForm = () => {
             <Popover
               visible={ isColorPickerShowed }
               content={
-                <SketchPicker 
-                  color={ pickedColor }
-                  onChange={ pickColor }
-                />
+                <>
+                  <SketchPicker 
+                    color={ pickedColor }
+                    onChange={ pickColor }
+                  />
+                </>
               }
             >
               <Button icon='bg-colors' onClick={ toggleColorPicker } />
