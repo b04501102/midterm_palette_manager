@@ -25,7 +25,11 @@ const PaletteCard = ({ palette }) => {
   }
 
   return (
-    <Card>
+    <Card
+      cover={
+        <img src={ palette.image } />
+      }
+    >
       <Row style={{
         position: 'absolute',
         right: '10px',

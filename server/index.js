@@ -29,16 +29,6 @@ nextApp.prepare().then(() => {
   
   app.use('/api/palettes', require('./api/palettes'))
 
-  // io.on('connection', socket => {
-  //   socket.emit('init', {
-  //     message: 'Home Page'
-  //   })
-  //   socket.on('add palette', data => {
-  //     db.push(data)
-  //     socket.broadcast.emit('new palette', data)
-  //   })
-  // })
-
   mongoose.Promise = Promise
   mongoose.connect(mongoDB, { 
     useNewUrlParser: true 
