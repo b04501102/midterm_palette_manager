@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Form, Input, Select, Button } from 'antd'
+import { Form, Input, Select, Button, Row, Col, Popover } from 'antd'
+import { SketchPicker } from 'react-color'
 const { Item } = Form
 const { Option } = Select
 
@@ -11,6 +12,9 @@ const OPTIONS_TAGS = ['Material Design', 'Ant Design', 'Processing', 'Web', 'iOS
 
 const CreatePaletteForm = () => {
   const [palette, setPalette] = useState(new Palette())
+  const [isColorPickerShowed, setIsColorPickerShowed] = useState(false)
+  const [pickedColor, setPickedColor] = useState('#fff')
+
   const dispatch = useDispatch()
 
   const changeTitle = e => {
@@ -21,6 +25,12 @@ const CreatePaletteForm = () => {
   const selectAuthor = author => {
     palette.author = [...palette.author, author]
     setPalette(palette)
+  }
+  const toggleColorPicker = () => {
+    setIsColorPickerShowed(!isColorPickerShowed)
+  }
+  const pickColor = (color, event) => {
+    setPickedColor(color.hex)
   }
   const selectColors = color => {
     palette.colors = [...palette.colors, color]
@@ -65,15 +75,32 @@ const CreatePaletteForm = () => {
         </Select>
       </Item>
       <Item label='Colors'>
-        <Select
-          mode='tags'
-          value={ palette.colors }
-          onSelect={ selectColors }
-          onDeselect={ deselectColors }
-          InputKeyDown={ selectColors }
-        >
-          { palette.colors.map((color, i) => (<Option value={ color } key={ i }>{ color }</Option>)) }
-        </Select>
+        <Row type='flex'>
+          <Col span={22}>
+            <Select
+              mode='tags'
+              value={ palette.colors }
+              onSelect={ selectColors }
+              onDeselect={ deselectColors }
+              InputKeyDown={ selectColors }
+            >
+              { palette.colors.map((color, i) => (<Option value={ color } key={ i }>{ color }</Option>)) }
+            </Select>
+          </Col>
+          <Col order={1} style={{paddingLeft: 0}}>
+            <Popover
+              visible={ isColorPickerShowed }
+              content={
+                <SketchPicker 
+                  color={ pickedColor }
+                  onChange={ pickColor }
+                />
+              }
+            >
+              <Button icon='bg-colors' onClick={ toggleColorPicker } />
+            </Popover>
+          </Col>
+        </Row>
       </Item>
       <Item label='Tags'>
         <Select
