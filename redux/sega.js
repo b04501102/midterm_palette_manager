@@ -4,7 +4,7 @@ import { put, takeLatest, takeEvery, all, call } from 'redux-saga/effects'
 import es6promise from 'es6-promise'
 import 'isomorphic-unfetch'
 // const PALETTES_API_URL =  'http://rainforest.tools/api/palettes'
-const PALETTES_API_URL =  process.env.NODE_DEV !== 'production' ? 'http://localhost:3000/api/palettes/' : 'http://rainforest.tools/api/palettes/'
+const PALETTES_API_URL =  process.env.NODE_DEV !== 'production' ? `http://localhost:3000/api/palettes/` : 'https://palette-manager.herokuapp.com/api/palettes/'
 
 es6promise.polyfill()
 
