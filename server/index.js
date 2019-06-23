@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 
 const mongoDB = process.env.NODE_DEV === 'production' ? 'mongodb://rainforest:abcd1234@rainforest.tools:32768/admin' : 'mongodb://rainforest:abcd1234@192.168.0.143:32768/admin'
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8080
 
 const dev = process.env.NODE_DEV !== 'production'
 const next = require('next')
