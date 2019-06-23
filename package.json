@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server/index.js",
-    "build": "next build",
+    // "build": "next build",
     "start": "node ./server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
