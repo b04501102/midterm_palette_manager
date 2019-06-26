@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Form, Input, Select, Button, Row, Col, Popover } from 'antd'
+import { Form, Input, Select, Button, Row, Col, Popover, Upload, Icon } from 'antd'
 import { SketchPicker } from 'react-color'
 const { Item } = Form
 const { Option } = Select
@@ -16,6 +16,15 @@ const CreatePaletteForm = () => {
   const [pickedColor, setPickedColor] = useState('#fff')
 
   const dispatch = useDispatch()
+
+  const fileList = [
+  ]
+
+  const props = {
+    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+    listType: 'picture',
+    defaultFileList: [...fileList],
+  }
 
   const changeTitle = e => {
     const { value } = e.target
@@ -41,10 +50,21 @@ const CreatePaletteForm = () => {
     setPalette(palette)
   }
 
+  const selectImage = img => {
+    palette.image = [...palette.image, img]
+    setPalette(palette)
+  }
+
+  const deselectImage = img => {
+    palette.image.splice(item.key, 1)
+    setPalette(palette)
+  }
+
   const selectTags = tag => {
     palette.tags = [...palette.tags, tag]
     setPalette(palette)
   }
+
   const deselectTags = (tag, item) => {
     palette.tags.splice(item.key, 1)
     setPalette(palette)
@@ -101,6 +121,16 @@ const CreatePaletteForm = () => {
             </Popover>
           </Col>
         </Row>
+      </Item>
+      <Item label='Images'>
+        <Upload {...props}>
+          <Button
+            value ={ palette.image }
+            onChange={ selectImage }
+            onRemove={ deselectImage} >
+            <Icon type="upload" /> Upload
+          </Button>
+        </Upload>
       </Item>
       <Item label='Tags'>
         <Select
