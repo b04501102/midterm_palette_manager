@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Card, Icon, Avatar, Button, Row, Typography, Tag } from 'antd'
+
 const { Meta, Grid } = Card
 const { Text } = Typography
 
@@ -13,15 +14,18 @@ const gridStyle = (bgc) => ({
 })
 
 const PaletteCard = ({ palette }) => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   const updatePalette = () => {
-    dispatch({ type: 'SELECT_PALETTE', palette: palette })
-    dispatch({ type: 'TOGGLE_EDIT_MODE', isEditMode: true })
+    console.log('update')
+    // dispatch({ type: 'SELECT_PALETTE', palette: palette })
+    // dispatch({ type: 'TOGGLE_EDIT_MODE', isEditMode: true })
   }
 
   const removePalette = () => {
-    dispatch({ type: 'DELETE_PALETTE', id: palette._id })
+    console.log(palette._id)
+    // DELETE_PALLETE(palette._id)
+    // dispatch({ type: 'DELETE_PALETTE', id: palette._id })
   }
 
   return (

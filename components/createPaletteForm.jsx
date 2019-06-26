@@ -6,6 +6,9 @@ const { Item } = Form
 const { Option } = Select
 
 import Palette from '../models/paletteModel.js'
+import { CREATE_PALETTE } from '../graphql/index.js';
+import { Mutation } from 'react-apollo'
+import gql from "graphql-tag";
 
 const OPTIONS_AUTHOR = ['Rainforest']
 const OPTIONS_TAGS = ['Material Design', 'Ant Design', 'Processing', 'Web', 'iOS']
@@ -15,7 +18,7 @@ const CreatePaletteForm = () => {
   const [isColorPickerShowed, setIsColorPickerShowed] = useState(false)
   const [pickedColor, setPickedColor] = useState('#fff')
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   const fileList = [
   ]
@@ -70,12 +73,8 @@ const CreatePaletteForm = () => {
     setPalette(palette)
   }
 
-  const addPalette = () => {
-    dispatch({ type: 'ADD_PALETTE', palette: palette })
-    setPalette(new Palette())
-  }
-
   return (
+    
     <Form>
       <Item label='Title'><Input 
         placeholder='Default Title'
@@ -144,7 +143,22 @@ const CreatePaletteForm = () => {
           )) }
         </Select>
       </Item>
-      <Item><Button type="primary" htmlType="submit" onClick={ addPalette }>ADD</Button></Item>
+      <Item>
+      <Mutation mutation={CREATE_PALETTE}>
+        {(createPallete, { data }) => (
+          <div>
+            <form
+              onSubmit={e => {
+                e.preventDefault();
+                createPallete({ variables: { pallete: palette } });
+              }}
+            >
+              <button type="submit">Add</button>
+            </form>
+          </div>
+        )}
+      </Mutation>
+      </Item>
     </Form>
   )
 }
