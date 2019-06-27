@@ -1,21 +1,30 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { Form, Input, Select, Button, Row, Col, Popover } from 'antd'
+// import { useDispatch } from 'react-redux'
+import { Form, Input, Select, Upload, Button, Row, Col, Popover } from 'antd'
 import { SketchPicker } from 'react-color'
 const { Item } = Form
 const { Option } = Select
 
 import Palette from '../models/paletteModel.js'
+import { CREATE_PALETTE, PALLETES_QUERY } from '../graphql/index.js';
+import { Mutation } from 'react-apollo'
 
 const OPTIONS_AUTHOR = ['Rainforest']
 const OPTIONS_TAGS = ['Material Design', 'Ant Design', 'Processing', 'Web', 'iOS']
 
-const CreatePaletteForm = () => {
+const getBase64 = (img, callback) => {
+  const reader = new FileReader()
+  reader.addEventListener('load', () => callback(reader.result))
+  reader.readAsDataURL(img)
+}
+
+const CreatePaletteForm = ({showpanel}) => {
+  const [isImageUploading, setIsImageUploading] = useState(false)
   const [palette, setPalette] = useState(new Palette())
   const [isColorPickerShowed, setIsColorPickerShowed] = useState(false)
   const [pickedColor, setPickedColor] = useState('#fff')
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   const changeTitle = e => {
     const { value } = e.target
@@ -26,6 +35,22 @@ const CreatePaletteForm = () => {
     palette.author = [...palette.author, author]
     setPalette(palette)
   }
+
+  const uploadImage = info => {
+    if(info.file.status === 'uploading'){
+      setIsImageUploading(true)
+      return
+    }
+    if(info.file.status === 'done'){
+      getBase64(info.file.originFileObj, imgUrl => {
+        setIsImageUploading(false)
+        console.log(imgUrl)
+        palette.image = imgUrl
+        setPalette(palette)
+      })
+    }
+  }
+
   const toggleColorPicker = () => {
     setIsColorPickerShowed(!isColorPickerShowed)
   }
@@ -33,6 +58,7 @@ const CreatePaletteForm = () => {
     setPickedColor(color.hex)
   }
   const selectColors = color => {
+    console.log(color)
     palette.colors = [...palette.colors, color]
     setPalette(palette)
   }
@@ -50,10 +76,10 @@ const CreatePaletteForm = () => {
     setPalette(palette)
   }
 
-  const addPalette = () => {
-    dispatch({ type: 'ADD_PALETTE', palette: palette })
-    setPalette(new Palette())
-  }
+  // const addPalette = () => {
+  //   dispatch({ type: 'ADD_PALETTE', palette: palette })
+  //   setPalette(new Palette())
+  // }
 
   return (
     <Form>
@@ -74,6 +100,26 @@ const CreatePaletteForm = () => {
           )) }
         </Select>
       </Item>
+      <Item label='Image'>
+        <Upload
+          name='avatar'
+          listType='picture-card'
+          className='avatar-uploader'
+          action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
+          showUploadList={ false }
+          onChange={ uploadImage }
+        >
+          {
+            palette.image ? 
+            <img src={ palette.image } alt='avatar'/> :
+            <Button
+              icon={ isImageUploading ? 'loading' : 'plus' }
+            >
+              Upload
+            </Button>
+          }
+        </Upload>
+      </Item>
       <Item label='Colors'>
         <Row type='flex'>
           <Col span={22}>
@@ -91,10 +137,21 @@ const CreatePaletteForm = () => {
             <Popover
               visible={ isColorPickerShowed }
               content={
-                <SketchPicker 
-                  color={ pickedColor }
-                  onChange={ pickColor }
-                />
+                <>
+                  <SketchPicker 
+                    color={ pickedColor }
+                    onChange={ pickColor }
+                  />
+                  <Row>
+                    <Button onClick={ toggleColorPicker }>Cancel</Button>
+                    <Button
+                      onClick={event => {
+                        palette.colors = [...palette.colors, pickedColor]
+                        setPalette(palette)
+                      }}
+                    >Choose</Button>
+                  </Row>
+                </>
               }
             >
               <Button icon='bg-colors' onClick={ toggleColorPicker } />
@@ -114,7 +171,19 @@ const CreatePaletteForm = () => {
           )) }
         </Select>
       </Item>
-      <Item><Button type="primary" htmlType="submit" onClick={ addPalette }>ADD</Button></Item>
+      <Item>
+      <Mutation mutation={CREATE_PALETTE}>
+        {(createPallete, { data }) => (
+          <Button type="primary" htmlType="submit" onClick={e => {
+            e.preventDefault();
+            createPallete({ variables: { pallete: palette }, refetchQueries: [{ query: PALLETES_QUERY }]});
+            showpanel();
+            }
+        }>Add</Button>
+        )}
+      </Mutation>
+        {/* <Button type="primary" htmlType="submit" onClick={ addPalette }>ADD</Button> */}
+      </Item>
     </Form>
   )
 }

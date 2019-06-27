@@ -1,6 +1,9 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+// import { useDispatch } from 'react-redux'
 import { Card, Icon, Avatar, Button, Row, Typography, Tag } from 'antd'
+
+import {Mutation} from 'react-apollo'
+import { DELETE_PALLETE, PALLETES_QUERY } from '../graphql/index.js';
 const { Meta, Grid } = Card
 const { Text } = Typography
 
@@ -12,20 +15,23 @@ const gridStyle = (bgc) => ({
   backgroundColor: bgc
 })
 
-const PaletteCard = ({ palette }) => {
-  const dispatch = useDispatch()
+const PaletteCard = ({ palette, select_func }) => {
+  // const dispatch = useDispatch()
 
   const updatePalette = () => {
-    dispatch({ type: 'SELECT_PALETTE', palette: palette })
-    dispatch({ type: 'TOGGLE_EDIT_MODE', isEditMode: true })
+    select_func(palette)
   }
 
   const removePalette = () => {
-    dispatch({ type: 'DELETE_PALETTE', id: palette._id })
+    // dispatch({ type: 'DELETE_PALETTE', id: palette._id })
   }
 
   return (
-    <Card>
+    <Card
+      cover={
+        <img src={ palette.image } />
+      }
+    >
       <Row style={{
         position: 'absolute',
         right: '10px',
@@ -35,10 +41,22 @@ const PaletteCard = ({ palette }) => {
           icon='edit'
           onClick={ updatePalette }
         />
-        <Button
-          icon='delete'
-          onClick={ removePalette }
-        />
+        <Mutation mutation={DELETE_PALLETE}>
+        {(deletePallete, { data }) => (
+          <Button
+            icon='delete'
+            onClick={e => {
+              e.preventDefault();
+              try{
+                deletePallete({ variables: { input: palette._id }, refetchQueries: [{ query: PALLETES_QUERY }]})
+              }
+              catch(e){
+                console.log(e)
+              }
+          }}
+          /> 
+        )}
+        </Mutation>
       </Row>
       <Meta
         avatar={<Avatar icon='user' />}
