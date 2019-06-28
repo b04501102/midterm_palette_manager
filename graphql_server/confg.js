@@ -30,24 +30,29 @@ const paletteModel = new Schema({
 const PalleteModel = mongoose.models.Palette || mongoose.model('Palette', paletteModel)
 
 module.exports = {
-	getPalletes: () => PalleteModel.find().sort({ _id: 1 })
+	getPalletes: () => PalleteModel.find().sort({ create_at: 1 })
 	,
-	getPallete: _id => {PalleteModel.findOne({ _id })}
-	,
+	// getPalletes_inorder: () => {PalleteModel.findOne({ _id })}
+	// ,
 	createPallete: args => {
-		// PalleteModel(args).save()
 		PalleteModel.create(args)
     },
     deletePallete: _id =>{
-        const pallete = PalleteModel.findById( _id )
-        console.log("removing", _id)
-        // if (!pallete) {
-        //     throw new Error('Error')
-        // }
-        // else{
-        //     pallete.remove()
-        //     return pallete
-        // }
-        
+        return PalleteModel.deleteOne({"_id": _id})
+    },
+    updatePallete: args => {
+        return PalleteModel.updateOne(
+            {_id: args._id},
+            {
+                title: args.title,
+                author: args.author,
+                image: args.image,
+                colors: args.colors,
+                tags: args.tags,
+                create_at: args.create_at,
+                last_modified_at: args.last_modified_at,
+                comments: args.comments
+            }
+        )
     }
 }

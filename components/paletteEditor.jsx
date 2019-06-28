@@ -1,18 +1,24 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+// import { useDispatch } from 'react-redux'
 import { Form, Input, Select, Button } from 'antd'
 const { Item } = Form
 const { Option } = Select
+
+import { Mutation } from 'react-apollo'
+import { PALLETES_QUERY,UPDATE_PALETTE } from '../graphql'
 
 import Palette from '../models/paletteModel.js'
 
 const OPTIONS_AUTHOR = ['Rainforest']
 const OPTIONS_TAGS = ['Material Design', 'Ant Design', 'Processing', 'Web', 'iOS']
 
-const PaletteEditor = ({ selectedPalette }) => {
+const PaletteEditor = ({ selectedPalette, hidePalette }) => {
   const [palette, setPalette] = useState(selectedPalette)
-  const dispatch = useDispatch()
-
+  useEffect(
+    () => {
+      setPalette(selectedPalette)
+    }
+  )
   const changeTitle = e => {
     const { value } = e.target
     palette.title = value
@@ -41,7 +47,7 @@ const PaletteEditor = ({ selectedPalette }) => {
   }
 
   const updatePalette = () => {
-    dispatch({ type: 'UPDATE_PALETTE', palette: palette })
+    // dispatch({ type: 'UPDATE_PALETTE', palette: palette })
   }
 
   return (
@@ -86,7 +92,36 @@ const PaletteEditor = ({ selectedPalette }) => {
           )) }
         </Select>
       </Item>
-      <Item><Button type="primary" htmlType="submit" onClick={ updatePalette }>UPDATE</Button></Item>
+      <Item>
+        {/* <Button type="primary" htmlType="submit" onClick={ updatePalette }>UPDATE</Button> */}
+        <Mutation mutation={UPDATE_PALETTE}>
+          {(updatePallete, { data }) => (
+            <Button
+              type="primary" 
+              htmlType="submit"
+              onClick={e => {
+                e.preventDefault();
+                updatePallete({ variables: { 
+                  palette: {
+                    _id: palette._id,
+                    title: palette.title,
+                    author: palette.author,
+                    comments: palette.comments,
+                    image: palette.image,
+                    colors: palette.colors,
+                    tags: palette.tags,
+                    create_at: palette.create_at,
+                    last_modified_at: palette.last_modified_at
+                  } 
+                }, refetchQueries: [{ query: PALLETES_QUERY }]})
+                hidePalette()
+            }}
+            >
+              UPDATE
+            </Button>
+          )}
+        </Mutation>
+      </Item>
     </Form>
   )
 }

@@ -13,6 +13,17 @@ const typeDefs = gql`
         last_modified_at: String
         comments: [String]
     }
+    input PalleteupdateInput {
+        _id: String
+        title: String
+        author: [String]
+        image: String
+        colors: [String]
+        tags: [String]
+        create_at: String
+        last_modified_at: String
+        comments: [String]
+    }
     type Pallete {
         _id: String
         title: String
@@ -25,18 +36,18 @@ const typeDefs = gql`
         comments: [String]
     }
     type Query {
-        getPallete(_tiid: String): Pallete
 		getPalletes: [Pallete]
     }
 
     type Mutation {
         createPallete( input: PalleteInput ): Pallete
-        deletePallete(id: ID!): Pallete
+        deletePallete( id: String! ): Pallete
+        updatePallete( input: PalleteupdateInput ): Pallete
 	}
 `;
 const resolvers = {
     Query: {
-        getPallete: _id => PalleteModel.getPallete(_id),
+        // getPalletes_inorder: () => PalleteModel.getPalletes_inorder(),
 
 		getPalletes: () => PalleteModel.getPalletes()
         
@@ -47,6 +58,9 @@ const resolvers = {
         },
         deletePallete: (_, {id}) => (
             PalleteModel.deletePallete(id)
+        ),
+        updatePallete: (_, {input}) => (
+            PalleteModel.updatePallete(input)
         )
     }
 
