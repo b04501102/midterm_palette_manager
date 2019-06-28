@@ -18,7 +18,6 @@ const OPTIONS_AUTHOR = ['Rainforest']
 const OPTIONS_TAGS = ['Material Design', 'Ant Design', 'Processing', 'Web', 'iOS']
 const BASE64_MARKER = ';base64,';
 
-
 const getBase64 = (img, callback) => {
   const reader = new FileReader()
   reader.addEventListener('load', () => callback(reader.result))
@@ -54,9 +53,9 @@ const Kmeans = (url) => {
   let temp_a = img_uint8.slice(0, pivot1);
   let temp_b = img_uint8.slice(pivot1, pivot2);
   let temp_c = img_uint8.slice(pivot2, pivot3);
-  var res1 = skmeans(temp_a, 4).centroids
-  var res2 = skmeans(temp_b, 4).centroids
-  var res3 = skmeans(temp_c, 4).centroids
+  var res1 = skmeans(temp_a, 10).centroids
+  var res2 = skmeans(temp_b, 10).centroids
+  var res3 = skmeans(temp_c, 10).centroids
   var color1 = rgbToHex(Math.ceil(res1[0]), Math.ceil(res2[0]), Math.ceil(res3[0]))
   var color2 = rgbToHex(Math.ceil(res1[1]), Math.ceil(res2[1]), Math.ceil(res3[1]))
   var color3 = rgbToHex(Math.ceil(res1[2]), Math.ceil(res2[2]), Math.ceil(res3[2]))
@@ -108,6 +107,7 @@ const CreatePaletteForm = ({showpanel}) => {
       return 
     }
     if(info.file.status === 'done'){
+      console.log(info)
       getBase64(info.file.originFileObj, imgUrl => {
         setIsImageUploading(false)
         console.log(imgUrl)
@@ -116,6 +116,7 @@ const CreatePaletteForm = ({showpanel}) => {
         palette.colors = [...palette.colors, color[0], color[1], color[2], color[3]]
         palette.colors.map((color, i) => (<Option defaultValue={ color } key={ i }>{ color }</Option>))
         setPalette(palette)
+
       })
     }
   }
@@ -172,12 +173,13 @@ const CreatePaletteForm = ({showpanel}) => {
       <Item label='Image'>
         <Upload
           name='avatar'
-          listType='picture-card'
+          listType='picture'
           className='avatar-uploader'
           action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
           showUploadList={ true }
           beforeUpload={ handleBeforeUpload }
           onChange={ uploadImage }
+          multiple={ false}
         >
           {
             <Button
