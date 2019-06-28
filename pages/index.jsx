@@ -54,6 +54,13 @@ const Home = () => {
 
   const [isEditorMode, setisEditorMode] = useState(false)
 
+// const origin_Editor = palette => {
+//   console.log(palette.title)
+//   return (<PaletteEditor selectedPalette={ palette } hidePalette={hidePalleteEditor}/>)
+// }
+// const [Editor, setEditor] = useState(origin_Editor(new origin_Editor(selectedPalette)))
+
+
   const showCreatePaletteFormModal = () => {
     setIsCreatePaletteFormModalVissible(true)
   }
