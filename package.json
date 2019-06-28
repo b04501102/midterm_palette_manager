@@ -42,6 +42,7 @@
     "redux": "^4.0.1",
     "redux-actions": "^2.6.5",
     "redux-saga": "^1.0.2",
+    "skmeans": "^0.10.2",
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0",
     "styled-components": "^4.2.0"
