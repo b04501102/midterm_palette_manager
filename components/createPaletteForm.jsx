@@ -112,9 +112,9 @@ const CreatePaletteForm = ({showpanel}) => {
         setIsImageUploading(false)
         console.log(imgUrl)
         palette.image = imgUrl
-        setPalette(palette)
         var color = Kmeans(imgUrl)
         palette.colors = [...palette.colors, color[0], color[1], color[2], color[3]]
+        palette.colors.map((color, i) => (<Option defaultValue={ color } key={ i }>{ color }</Option>))
         setPalette(palette)
       })
     }
@@ -153,14 +153,14 @@ const CreatePaletteForm = ({showpanel}) => {
   return (
     <Form>
       <Item label='Title'><Input 
-        placeholder='Default Title'
-        value={ palette.title }
+        placeholder='Color Palette'
+        defaultValue={ palette.title }
         onChange={ changeTitle }
       /></Item>
       <Item label='Author'>
         <Select
           mode='multiply'
-          value={ palette.author }
+          defaultValue={ palette.author }
           onSelect={ selectAuthor }
           InputKeyDown={ selectAuthor }
         >
@@ -175,13 +175,11 @@ const CreatePaletteForm = ({showpanel}) => {
           listType='picture-card'
           className='avatar-uploader'
           action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
-          showUploadList={ false }
+          showUploadList={ true }
           beforeUpload={ handleBeforeUpload }
           onChange={ uploadImage }
         >
           {
-            palette.image ? 
-            <img src={ palette.image } width='250' alt='avatar'/> :
             <Button
               icon={ isImageUploading ? 'loading' : 'plus' }
             >
@@ -232,12 +230,12 @@ const CreatePaletteForm = ({showpanel}) => {
       <Item label='Tags'>
         <Select
           mode='tags'
-          value={ palette.tags }
+          defaultValue={ palette.tags }
           onSelect={ selectTags }
           InputKeyDown={ selectTags }
         >
           { (OPTIONS_TAGS.filter(o => !palette.tags.includes(o))).map((tag, i) => (
-            <Option value={ tag } key={ i }>{ tag }</Option>
+            <Option defaultValue={ tag } key={ i }>{ tag }</Option>
           )) }
         </Select>
       </Item>
