@@ -31,6 +31,8 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 #### Ant Design
 ### Server-side: Next.js + Express.js + Mongoose
 ### Database: MongoDB + Docker
+### Prediction: Skmeans (ttps://www.npmjs.com/package/skmeans)
+math.js (https://mathjs.org/)
 
 ## Contributes
 * create a web app to manage(ex. save, sort...) palettes
