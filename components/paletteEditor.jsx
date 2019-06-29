@@ -54,41 +54,41 @@ const PaletteEditor = ({ selectedPalette, hidePalette }) => {
     <Form>
       <Item label='Title'><Input 
         placeholder='Default Title'
-        value={ palette.title }
+        defaultValue={ palette.title }
         onChange={ changeTitle }
       /></Item>
       <Item label='Author'>
         <Select
           mode='multiply'
-          value={ palette.author }
+          defaultValue={ palette.author }
           onSelect={ selectAuthor }
           InputKeyDown={ selectAuthor }
         >
           { (OPTIONS_AUTHOR.filter(o => !palette.author.includes(o))).map((author, i) => (
-            <Option value={ author } key={ i }>{ author }</Option>
+            <Option defaultValue={ author } key={ i }>{ author }</Option>
           )) }
         </Select>
       </Item>
       <Item label='Colors'>
         <Select
           mode='tags'
-          value={ palette.colors }
+          defaultValue={ palette.colors }
           onSelect={ selectColors }
           onDeselect={ deselectColors }
           InputKeyDown={ selectColors }
         >
-          { palette.colors.map((color, i) => (<Option value={ color } key={ i }>{ color }</Option>)) }
+          { palette.colors.map((color, i) => (<Option defaultValue={ color } key={ i }>{ color }</Option>)) }
         </Select>
       </Item>
       <Item label='Tags'>
         <Select
           mode='tags'
-          value={ palette.tags }
+          defaultValue={ palette.tags }
           onSelect={ selectTags }
           InputKeyDown={ selectTags }
         >
           { (OPTIONS_TAGS.filter(o => !palette.tags.includes(o))).map((tag, i) => (
-            <Option value={ tag } key={ i }>{ tag }</Option>
+            <Option defaultValue={ tag } key={ i }>{ tag }</Option>
           )) }
         </Select>
       </Item>
