@@ -1,7 +1,7 @@
 # Palette Manager
 > A Cross-Platform Web App to manage your palettes
 
-![Palette Manager](https://i.imgur.com/BqegCOv.png)
+![Palette Manager](https://i.imgur.com/BqegCOv.png =600x)
 
 Demo: <http://rainforest.tools>
 
