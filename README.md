@@ -1,4 +1,4 @@
-# Palette Manager
+# Color Palette Manager
 > (Group06) A Cross-Platform Web App to manage your palettes
 
 ![Palette Manager](https://i.imgur.com/yDFRvCe.png)
