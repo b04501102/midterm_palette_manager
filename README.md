@@ -1,6 +1,8 @@
 # Palette Manager
 > A Cross-Platform Web App to manage your palettes
 
+![Palette Manager](https://i.imgur.com/BqegCOv.png)
+
 Demo: <http://rainforest.tools>
 
 ## Get Starting
@@ -64,6 +66,6 @@ https://www.canva.com/colors/color-palettes/page/
 and train these data based on CNN and other complex models, but acquire poor results.
 * Kmeans and clustering achieve better performance on palette prediction task, and the result is shown in the following:
 (based on Kmeans model of Scikit-learn)
-![Predict Result](https://i.imgur.com/FjwPuzu.png)
+![Predict Result](https://i.imgur.com/b66ZFm4.png)
 * We finally use `Skmeans.js` + `Math.js` to implement the model
 * Transformation of `base64 format to image color` has room for improvement
