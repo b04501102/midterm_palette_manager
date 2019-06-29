@@ -68,7 +68,7 @@ and train these data based on CNN and other complex models, but acquire poor res
 * Transformation of `base64 format to image color` has room for improvement
 
 ## 每個人的貢獻
-鄭羽霖(B04501102):前端介面、操作、前端 CRUD 功能
-李利元(B04501073):前端介面、GraphQL
-謝伊妍(D06943001):色票預測模型+投影片、影片製作
+* 鄭羽霖(B04501102): 前端介面、操作、前端 CRUD 功能
+* 李利元(B04501073): 前端介面、GraphQL
+* 謝伊妍(D06943001): 色票預測模型+投影片、影片製作
 
