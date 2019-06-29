@@ -38,7 +38,9 @@ export default (Page) => {
           height: '100vh',
           position: 'fixed',
           left: 0,
-        }} collapsible collapsedWidth='0' collapsed={ collapsed } onCollapse={ toggle }>Sider</Sider>
+        }} collapsible collapsedWidth='0' collapsed={ collapsed } onCollapse={ toggle }>
+          Sider
+        </Sider>
         <Layout>
           <Header style={Object.assign({}, (isHeaderBgShowed ? headerBgShowed : headerBgHiden), { 
             position: 'fixed',

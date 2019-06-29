@@ -41,11 +41,6 @@ const client = new ApolloClient({
 
 const Home = () => {
   const [isCreatePaletteFormModalVissible, setIsCreatePaletteFormModalVissible] = useState(false)
-  
-  // const palettes = useSelector(state => state.palettes)
-  // const isEditorMode = useSelector(state => state.isEditorMode)
-  // const selectedPalette = useSelector(state => state.selectedPalette)
-  // const dispatch = useDispatch()
 
   let [selectedPalette, setselectedPalette] = useState({
     title:"",
@@ -53,13 +48,6 @@ const Home = () => {
   })
 
   const [isEditorMode, setisEditorMode] = useState(false)
-
-// const origin_Editor = palette => {
-//   console.log(palette.title)
-//   return (<PaletteEditor selectedPalette={ palette } hidePalette={hidePalleteEditor}/>)
-// }
-// const [Editor, setEditor] = useState(origin_Editor(new origin_Editor(selectedPalette)))
-
 
   const showCreatePaletteFormModal = () => {
     setIsCreatePaletteFormModalVissible(true)
@@ -111,15 +99,6 @@ const Home = () => {
             );
           }}
         </Query>
-        {/* { palettes.map((palette, id) => {
-          return (
-            <Col sm={24} md={12} lg={8} xxl={6} key={ id } style={{
-              marginBottom: '10px'
-            }}>
-              <PaletteCard palette={ palette }/>
-            </Col>
-          )
-        }) } */}
       </Row>
       <Drawer
         title={ selectedPalette.title }

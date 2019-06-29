@@ -24,7 +24,7 @@ import { CREATE_PALETTE, PALLETES_QUERY } from '../graphql/index.js';
 import { Mutation } from 'react-apollo'
 import { set } from 'mongoose';
 
-const OPTIONS_AUTHOR = ['Rainforest']
+const OPTIONS_AUTHOR = ['Rainforest', 'Jocelyn', 'Max']
 const OPTIONS_TAGS = ['Material Design', 'Ant Design', 'Processing', 'Web', 'iOS']
 const BASE64_MARKER = ';base64,';
 
@@ -35,7 +35,7 @@ const getBase64 = (img, callback) => {
 }
 
 const convertDataURIToBinary = (dataURI) => {
-  console.log(dataURI)
+  // console.log(dataURI)
   var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
   var base64 = dataURI.substring(base64Index);
   var raw = window.atob(base64);
@@ -72,10 +72,10 @@ const Kmeans = (url) => {
   var color3 = rgbToHex(Math.ceil(res1[2]), Math.ceil(res2[2]), Math.ceil(res3[2]))
   var color4 = rgbToHex(Math.ceil(res1[3]), Math.ceil(res2[3]), Math.ceil(res3[3]))
 
-  console.log(color1)
-  console.log(color2)
-  console.log(color3)
-  console.log(color4)
+  // console.log(color1)
+  // console.log(color2)
+  // console.log(color3)
+  // console.log(color4)
 
   return [color1, color2, color3, color4]
 }
@@ -90,7 +90,6 @@ const CreatePaletteForm = ({showpanel}) => {
   const [title, setTitle] = useState("")
   const [author, setAuthor] = useState([])
 
-  // const dispatch = useDispatch()
 
   const changeTitle = e => {
     const { value } = e.target
@@ -99,7 +98,8 @@ const CreatePaletteForm = ({showpanel}) => {
     setTitle(value)
   }
   const selectAuthor = author => {
-    palette.author = [...palette.author, author]
+    // palette.author = [...palette.author, author]
+    palette.author = author
     setPalette(palette)
     setAuthor(palette.author)
   }
@@ -192,7 +192,8 @@ const CreatePaletteForm = ({showpanel}) => {
         <Select
           mode='multiply'
           value={ author }
-          onSelect={ selectAuthor }
+          // onSelect={ selectAuthor }
+          onChange={ selectAuthor }
           InputKeyDown={ selectAuthor }
         >
           { (OPTIONS_AUTHOR.filter(o => !palette.author.includes(o))).map((author, i) => (
@@ -233,7 +234,6 @@ const CreatePaletteForm = ({showpanel}) => {
               value={ colors }
               onSelect={ selectColors }
               onChange={ handleColorsChange }
-              // onDeselect={ deselectColors }
               InputKeyDown={ selectColors }
             >
               { colors.map((color, i) => (<Option value={ color } key={ i }>{ color }</Option>)) }
@@ -272,7 +272,6 @@ const CreatePaletteForm = ({showpanel}) => {
           value={ tags }
           onSelect={ selectTags }
           InputKeyDown={ selectTags }
-          // onDeselect={deselectTags}
           onChange={ handleTagsChange }
         >
           { (OPTIONS_TAGS.filter(o => !tags.includes(o))).map((tag, i) => (

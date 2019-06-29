@@ -36,7 +36,7 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 ### Server-side: Next.js + Express.js
 ### Apollo-server: GraphQL.js + Mongoose.js + Express.js
 #### Apollo
-* apollo-server-express: create an ApolloServer to handel the communication between  Client-server and MongoDB
+* apollo-server-express: create an ApolloServer to handel the communication between  Client-side and MongoDB
 ### Database: MongoDB + Docker
 ### Color Palatte Prediction: Skmeans.js + Math.js
 
