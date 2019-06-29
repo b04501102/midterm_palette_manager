@@ -1,5 +1,5 @@
 # Palette Manager
-> A Cross-Platform Web App to manage your palettes
+> (Group06) A Cross-Platform Web App to manage your palettes
 
 ![Palette Manager](https://i.imgur.com/yDFRvCe.png)
 
@@ -26,7 +26,6 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 * Use `zcat mongodb.gz | docker import - mongodb` to unzip file downloaded from cloud and import container 
 * Use `docker run -i -t mongodb /bin/bash` to run your container
 
-
 ## Structure
 ### Client-side: Next.js + GraphQL.js + Ant Design
 #### Apollo
@@ -40,15 +39,11 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 ### Database: MongoDB + Docker
 ### Color Palatte Prediction: Skmeans.js + Math.js
 
-## Contributes
+## Contributions
 * create a web app to manage(ex. save, sort...) palettes
 * use graphql to manage data flow
 * use Ant Design to build UI
 * use Docker to construct migratable database
-
-## 心得
-初學 React 兩個月，趁這個專案很快的摸索了 Next.js, Redux, Backend, 跟 MongoDB ；而關於專案內容則是一直很想做，但一直找不到藉口撥時間去弄的
-色票管理的程式，雖然目前進度離理想的樣子還有很大的距離，但藉這機會順便把開發環境建立起來，之後應該會快上很多。
 
 ## TODO
 - [x] UI Prototype
@@ -56,11 +51,9 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 - [x] Add Tags
 - [x] Update Palettes
 - [x] Use [React Color](http://casesandberg.github.io/react-color/) to select colors
-- [ ] Classify palettes by tags, author, ...
 - [x] Upload Images and choose palette from them 
-- [ ] Export palettes in different format
+- [x] Export palettes in different format
 - [x] Generate palette automatically
-
 
 ## Prediction Model
 * Goals: User uploads an image and then the backend will generates palette automatically
@@ -73,3 +66,9 @@ and train these data based on CNN and other complex models, but acquire poor res
 ![Predict Result](https://i.imgur.com/b66ZFm4.png)
 * We finally use `Skmeans.js` + `Math.js` to implement the model
 * Transformation of `base64 format to image color` has room for improvement
+
+## 每個人的貢獻
+鄭羽霖(B04501102):前端介面、操作、前端 CRUD 功能
+李利元(B04501073):前端介面、GraphQL
+謝伊妍(D06943001):色票預測模型+投影片、影片製作
+
