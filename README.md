@@ -48,8 +48,20 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 - [x] Add/Delete Palettes
 - [x] Add Tags
 - [x] Update Palettes
-- [ ] Use [React Color](http://casesandberg.github.io/react-color/) to select colors
+- [x] Use [React Color](http://casesandberg.github.io/react-color/) to select colors
 - [ ] Classify palettes by tags, author, ...
-- [ ] Upload Images and choose palette from them 
+- [x] Upload Images and choose palette from them 
 - [ ] Export palettes in different format
-- [ ] Generate palette automatically
+- [x] Generate palette automatically
+
+---
+
+## Prediction Model
+* Goals: User uploads an image and then the backend will generates palette automatically
+* All implemented model in `./ML_model` (CNN is trained poorly) and `./components/createPaletteForm.jsx`
+* In the beginning, we use `./ML_model/Crawler_Canva.py` to collet the data from https://www.canva.com/colors/color-palettes/page/, and train these data based on CNN and other complex models, but acquire poor results.
+* Kmeans and clustering achieve better performance on palette prediction task, the result is shown in the following:
+(based on Kmeans model of Scikit-learn)
+![Predict Result](https://i.imgur.com/FjwPuzu.png)
+* We finally use `Skmeans.js` + `Math.js` to implement the model
+* Transformation of base64 format to image color has room for improvement
