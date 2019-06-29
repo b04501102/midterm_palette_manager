@@ -58,11 +58,11 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 
 ## Prediction Model
 * Goals: User uploads an image and then the backend will generates palette automatically
-* All implemented model in `./ML_model` (CNN is trained poorly) and `./components/createPaletteForm.jsx`
-* In the beginning, we use `./ML_model/Crawler_Canva.py`   
-to collet the data from https://www.canva.com/colors/color-palettes/page/, and train these data based on CNN and other complex models, but acquire poor results.
-* Kmeans and clustering achieve better performance on palette prediction task,   
-and the result is shown in the following:
+* All implemented models are `./ML_model` (CNN is trained poorly) and `./components/createPaletteForm.jsx`
+* In the beginning, we use `./ML_model/Crawler_Canva.py` to collet the data from  
+https://www.canva.com/colors/color-palettes/page/  
+and train these data based on CNN and other complex models, but acquire poor results.
+* Kmeans and clustering achieve better performance on palette prediction task, and the result is shown in the following:
 (based on Kmeans model of Scikit-learn)
 ![Predict Result](https://i.imgur.com/FjwPuzu.png)
 * We finally use `Skmeans.js` + `Math.js` to implement the model
