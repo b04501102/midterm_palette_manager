@@ -9,8 +9,6 @@ Demo: <http://rainforest.tools>
 3. see **Install MongoDB** section
 4. `npm start`
 
----
-
 ## Install MongoDB
 There are two solutions:
 ### 1. add your MongoDB Link to my project
@@ -25,7 +23,6 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 * Use `zcat mongodb.gz | docker import - mongodb` to unzip file downloaded from cloud and import container 
 * Use `docker run -i -t mongodb /bin/bash` to run your container
 
----
 
 ## Structure
 ### Client-side: Next.js + Redux + Ant Design
@@ -37,21 +34,15 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 ### Database: MongoDB + Docker
 ### Color Palatte Prediction: Skmeans.js + Math.js
 
----
-
 ## Contributes
 * create a web app to manage(ex. save, sort...) palettes
 * use redux's packages(ex. redux-actions, redux-saga) to manage data flow and communicate with web api
 * use Ant Design to build UI
 * use Docker to construct migratable database
 
----
-
 ## 心得
 初學 React 兩個月，趁這個專案很快的摸索了 Next.js, Redux, Backend, 跟 MongoDB ；而關於專案內容則是一直很想做，但一直找不到藉口撥時間去弄的
 色票管理的程式，雖然目前進度離理想的樣子還有很大的距離，但藉這機會順便把開發環境建立起來，之後應該會快上很多。
-
----
 
 ## TODO
 - [x] UI Prototype
@@ -64,7 +55,6 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 - [ ] Export palettes in different format
 - [x] Generate palette automatically
 
----
 
 ## Prediction Model
 * Goals: User uploads an image and then the backend will generates palette automatically
