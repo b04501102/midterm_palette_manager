@@ -16,7 +16,6 @@ const gridStyle = (bgc) => ({
 })
 
 const PaletteCard = ({ palette, select_func }) => {
-  // const dispatch = useDispatch()
 
   const updatePalette = () => {
     select_func(palette)

@@ -1,11 +1,6 @@
 const app = require('express')()
 
 const server = require('http').Server(app)
-const io = require('socket.io')(server)
-
-const mongoose = require('mongoose')
-
-const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://rainforest:abcd1234@rainforest.tools:32768/admin' : 'mongodb://rainforest:abcd1234@192.168.0.143:32768/admin'
 
 const PORT = process.env.PORT || 3000
 
@@ -28,23 +23,6 @@ nextApp.prepare().then(() => {
   app.use(bodyParser.urlencoded({ extended: true }))
   
   app.use('/api/palettes', require('./api/palettes'))
-
-  // io.on('connection', socket => {
-  //   socket.emit('init', {
-  //     message: 'Home Page'
-  //   })
-  //   socket.on('add palette', data => {
-  //     db.push(data)
-  //     socket.broadcast.emit('new palette', data)
-  //   })
-  // })
-
-  mongoose.Promise = Promise
-  mongoose.connect(mongoDB, { 
-    useNewUrlParser: true 
-  })
-  const db = mongoose.connection
-  db.on('error', console.error.bind(console, 'connection error:'))
 
   app.get('*', (req, res) => {
     return handle(req, res)

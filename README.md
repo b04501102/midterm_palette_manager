@@ -9,7 +9,8 @@ Demo: <http://rainforest.tools>
 1. Clone the repository
 2. `npm i` to install packages
 3. see **Install MongoDB** section
-4. `npm start`
+4. `node graphql_server/index.js`
+5. `npm start`
 
 ## Install MongoDB
 There are two solutions:
@@ -27,18 +28,21 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 
 
 ## Structure
-### Client-side: Next.js + Redux + Ant Design
-#### Redux
-* redux-actions: create redux actions and reducers
-* redux-saga
+### Client-side: Next.js + GraphQL.js + Ant Design
+#### Apollo
+* react-apollo: handle mutation and query
+* react-boost: connect to the apollo server
 #### Ant Design
-### Server-side: Next.js + Express.js + Mongoose
+### Server-side: Next.js + Express.js
+### Apollo-server: GraphQL.js + Mongoose.js + Express.js
+#### Apollo
+* apollo-server-express: create an ApolloServer to handel the communication between  Client-server and MongoDB
 ### Database: MongoDB + Docker
 ### Color Palatte Prediction: Skmeans.js + Math.js
 
 ## Contributes
 * create a web app to manage(ex. save, sort...) palettes
-* use redux's packages(ex. redux-actions, redux-saga) to manage data flow and communicate with web api
+* use graphql to manage data flow
 * use Ant Design to build UI
 * use Docker to construct migratable database
 
