@@ -41,6 +41,11 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 ### Database: MongoDB + Docker
 ### Color Palatte Prediction: Skmeans.js + Math.js
 
+## Other Used Framework / Source code 
+* [React Color] http://casesandberg.github.io/react-color/  
+* [Skmeans.js] https://github.com/solzimer/skmeans  
+* [Math.js] https://mathjs.org  
+
 ## Contributions
 * create a web app to manage(ex. save, sort...) palettes
 * use graphql to manage data flow
