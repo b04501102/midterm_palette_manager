@@ -3,9 +3,10 @@
 
 ![Palette Manager](https://i.imgur.com/yDFRvCe.png)
 
-* Demo: http://rainforest.tools  
+* DEPLOYMENT: https://midterm-palette-manager.herokuapp.com/
 * Video: https://www.youtube.com/watch?v=BPU8DH8l8qU  
-* PPT: https://reurl.cc/RVDde  
+* PPT: https://reurl.cc/RVDde
+* GITHUB REPO: https://github.com/b04501102/midterm_palette_manager
   
 ## Get Starting
 1. Clone the repository
