@@ -14,9 +14,6 @@ const gridStyle = (bgc) => ({
   justifyContent: 'center',
   backgroundColor: bgc
 })
-//var data = [1,12,13,4,25,21,22,3,14,5,11,2,23,24,15];
-//var res = skmeans(data,3);
-//console.log(res)
 
 import Palette from '../models/paletteModel.js'
 const skmeans = require("skmeans")
