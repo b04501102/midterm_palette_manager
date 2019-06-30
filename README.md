@@ -3,7 +3,9 @@
 
 ![Palette Manager](https://i.imgur.com/yDFRvCe.png)
 
-Demo: <http://rainforest.tools>
+Demo:  http://rainforest.tools
+Video: https://www.youtube.com/watch?v=BPU8DH8l8qU  
+PPT:   https://reurl.cc/RVDde  
 
 ## Get Starting
 1. Clone the repository
