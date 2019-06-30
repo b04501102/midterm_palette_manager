@@ -77,7 +77,7 @@ and train these data based on CNN and other complex models, but acquire poor res
 
 ## Contribution of Each Member
 * 鄭羽霖(B04501102): Front-end interface, primary operation, CRUD function
-* 李利元(B04501073): Front-end interface, GraphQL, deplyment
+* 李利元(B04501073): Front-end interface, GraphQL, deployment
 * 謝伊妍(D06943001): Palette prediction model, slides & demo video
 
 ## Experiences Sharing 
