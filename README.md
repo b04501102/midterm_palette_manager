@@ -81,3 +81,5 @@ and train these data based on CNN and other complex models, but acquire poor res
 
 ## Experiences Sharing 
 
+(謝伊妍)
+非常感謝學弟們的carry讓我在final prj死線和研究大爆炸的時候，只需要實作用tensorflow+scikit-learn訓練的模型和後來串接到前端的部分，不過也是第一次實作爬蟲+把模型接到前端，原本預計是要用Tensorflow.js，但在本地端用tf+爬蟲的資料訓練出來的模型實在太爛了，後來就直接用簡單的Kmeans model來分群。但跟實際上爬到的色票資料相比還沒有到非常準確，光用Kmeans預測色票會有顏色相近和不夠精確的問題，可能還是要想一下怎麼分隔不同的顏色會比較好。因為時間關係，在image / base64的img url轉換上的處理也還沒有太深入的了解，之後希望能有機會再做更詳細的探討。
