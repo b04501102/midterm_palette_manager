@@ -29,7 +29,7 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 * Use `docker run -i -t mongodb /bin/bash` to run your container
 
 ## Structure
-### Client-side: Next.js + GraphQL.js + Ant Design + [React Color](http://casesandberg.github.io/react-color/) to select colors
+### Client-side: Next.js + GraphQL.js + Ant Design
 #### Apollo
 * react-apollo: handle mutation and query
 * react-boost: connect to the apollo server
