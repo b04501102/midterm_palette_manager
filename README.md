@@ -12,8 +12,7 @@
 1. Clone the repository
 2. `npm i` to install packages
 3. see **Install MongoDB** section
-4. `node graphql_server/index.js`
-5. `npm start`
+4. `npm start`
 
 ## Install MongoDB
 There are two solutions:
