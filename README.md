@@ -42,9 +42,9 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 ### Color Palatte Prediction: Skmeans.js + Math.js
 
 ## Other Used Framework / Source code 
-* [React Color] http://casesandberg.github.io/react-color/  
-* [Skmeans.js] https://github.com/solzimer/skmeans  
-* [Math.js] https://mathjs.org  
+* [React Color](http://casesandberg.github.io/react-color/)
+* [Skmeans.js](https://github.com/solzimer/skmeans)
+* [Math.js](https://mathjs.org)
 
 ## Contributions
 * create a web app to manage(ex. save, sort...) palettes
@@ -52,7 +52,7 @@ const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:270
 * use Ant Design to build UI
 * use Docker to construct migratable database
 
-## TODO
+## Implemented Features
 - [x] UI Prototype
 - [x] Add/Delete Palettes
 - [x] Add Tags
@@ -74,8 +74,10 @@ and train these data based on CNN and other complex models, but acquire poor res
 * We finally use `Skmeans.js` + `Math.js` to implement the model
 * Transformation of `base64 format to image color` has room for improvement
 
-## 每個人的貢獻
-* 鄭羽霖(B04501102): 前端介面、操作、前端 CRUD 功能
-* 李利元(B04501073): 前端介面、GraphQL
-* 謝伊妍(D06943001): 色票預測模型、投影片 / 影片製作
+## Contribution of Each Member
+* 鄭羽霖(B04501102): Front-end interface, primary operation, CRUD function
+* 李利元(B04501073): Front-end interface, GraphQL, deplyment
+* 謝伊妍(D06943001): Palette prediction model, slides & demo video
+
+## Experiences Sharing 
 
