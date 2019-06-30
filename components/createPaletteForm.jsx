@@ -71,12 +71,6 @@ const Kmeans = (url) => {
   var color2 = rgbToHex(Math.ceil(res1[1]), Math.ceil(res2[1]), Math.ceil(res3[1]))
   var color3 = rgbToHex(Math.ceil(res1[2]), Math.ceil(res2[2]), Math.ceil(res3[2]))
   var color4 = rgbToHex(Math.ceil(res1[3]), Math.ceil(res2[3]), Math.ceil(res3[3]))
-
-  // console.log(color1)
-  // console.log(color2)
-  // console.log(color3)
-  // console.log(color4)
-
   return [color1, color2, color3, color4]
 }
 
