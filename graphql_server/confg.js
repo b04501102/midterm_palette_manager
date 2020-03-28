@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const uuid = require('node-uuid')
 
-const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://rainforest:abcd1234@rainforest.tools:32768/admin' : 'mongodb://rainforest:abcd1234@192.168.0.143:32768/admin'
+const mongoDB = process.env.NODE_DEV !== 'production' ? 'mongodb://localhost:27017/palettes' : 'mongodb://heroku:4gKjSVG8WyGrGBQ@rainforest.tw:27017/palettes'
 
 mongoose.Promise = Promise
 
